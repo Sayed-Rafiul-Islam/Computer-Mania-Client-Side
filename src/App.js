@@ -7,7 +7,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import NotFound from './Pages/NotFound/NotFound';
 import Header from './Pages/Header/Header';
-import Purchase from './Pages/Purchase/Purchase';
+import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 
 function App() {
   return (
@@ -16,9 +16,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/inventory/:id' element={
+        <Route path='/placeOrder/:_id' element={
           <RequireAuth>
-            <Route path="/purchase/:id" element={<Purchase></Purchase>}></Route>
+            <PlaceOrder></PlaceOrder>
           </RequireAuth>
         }></Route>
         <Route path="/login" element={<Login></Login>}></Route>

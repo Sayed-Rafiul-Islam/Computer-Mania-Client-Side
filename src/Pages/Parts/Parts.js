@@ -4,6 +4,7 @@ import Part from '../Part/Part';
 
 const Parts = () => {
     const [parts, setparts] = useState([]);
+    const homeParts = parts.slice(0, 6);
     useEffect(() => {
         const getparts = async () => {
             const data = await axios.get(`https://floating-stream-33356.herokuapp.com/parts`);
@@ -12,11 +13,11 @@ const Parts = () => {
         getparts();
     }, [])
     return (
-        <div>
-            <h1>parts</h1>
-            <div>
+        <div className='mt-5'>
+            <h1 className='text-primary text-3xl mb-4 font-bold'>Parts</h1>
+            <div className='grid lg:grid-cols-3 grid-cols-1'>
                 {
-                    parts.map(part => <Part
+                    homeParts.map(part => <Part
                         part={part}
                     ></Part>
                     )
