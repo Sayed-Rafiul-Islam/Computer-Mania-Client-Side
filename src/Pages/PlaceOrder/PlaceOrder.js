@@ -41,7 +41,7 @@ const PlaceOrder = () => {
         const phone = e.target.phone.value;
         const address = e.target.address.value;
 
-        e.target.reset()
+
         const newQuantity = parseInt(quantity) - parseInt(amount);
         const updatedQuantity = `${newQuantity}`;
 
@@ -58,6 +58,9 @@ const PlaceOrder = () => {
                     setReload(reload + 1);
                 }
             })
+
+        e.target.reset()
+        setAmount(0);
     }
 
     return (
