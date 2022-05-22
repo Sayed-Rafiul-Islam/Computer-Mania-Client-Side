@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Hpme = () => {
+const Register = () => {
     return (
         <div>
-            <h1>home</h1>
+            <h1>reg</h1>
         </div>
     );
 };
 
-export default Hpme;
+export default Register;
