@@ -6,11 +6,11 @@ const Parts = () => {
     const [parts, setParts] = useState([]);
     const homeParts = parts.slice(0, 6);
     useEffect(() => {
-        const getparts = async () => {
+        const getParts = async () => {
             const data = await axios.get(`https://floating-stream-33356.herokuapp.com/parts`);
             setParts(data.data);
         }
-        getparts();
+        getParts();
     }, [])
     return (
         <div className='mt-5'>
