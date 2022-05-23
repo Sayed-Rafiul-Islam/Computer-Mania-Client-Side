@@ -67,8 +67,8 @@ const PlaceOrder = () => {
         <div>
             <p>User Name : <span className='text-secondary'>{user.displayName}</span> <br /> Email : <span className='text-secondary'>{user.email}</span></p>
             <div class="mx-auto hero-content flex-col lg:flex-row">
-                <img className='w-1/2 rounded-l-full' src={image} alt='' />
-                <div className='text-left'>
+                <img className='w-1/2 mr-2 rounded-l-full' src={image} alt='' />
+                <div className='text-left ml-2'>
                     <h1 class="text-5xl font-bold">{name}</h1>
                     <p class="pt-4 mb-8"><i>{description}</i></p>
                     <p className='mb-2'>Minimum Order : <span className='text-primary'>{minimumQuantity}</span></p>
@@ -86,6 +86,9 @@ const PlaceOrder = () => {
                                     <input disabled className='btn btn-primary' type="submit" value="Place Order" id="" />
                             }
                         </form>
+                        {
+                            able || <small className='text-red-500 w-full'>Must be greater than {minimumQuantity} and lesser than {quantity}</small>
+                        }
                     </div>
                 </div>
             </div>
