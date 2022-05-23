@@ -18,6 +18,8 @@ const Header = () => {
                 </label>
                 <ul tabIndex="0" className="menu menu-compact dropdown-content ml-3 mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                     <Link className='text-lg text-left' to='/home'>Home</Link>
+                    <Link className='text-lg text-left' to='/portfolio'>My Portfolio</Link>
+                    <Link className='text-lg text-left' to='/blogs'>Blogs</Link>
                     {
                         user ?
                             <div className='text-left'>
@@ -34,6 +36,8 @@ const Header = () => {
             <div className="hidden lg:flex">
                 <div className='flex mx-auto'>
                     <Link className='text-lg px-3' to='/home'>Home</Link>
+                    <Link className='text-lg px-3' to='/portfolio'>My Portfolio</Link>
+                    <Link className='text-lg px-3' to='/blogs'>Blogs</Link>
                     {
                         user ?
                             <div className='flex align-middle'>

@@ -12,6 +12,8 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import AddReview from './Pages/Dashboard/AddReview';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -19,14 +21,14 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/placeOrder/:_id' element={
+        <Route path='home' element={<Home></Home>}></Route>
+        <Route path='placeOrder/:_id' element={
           <RequireAuth>
             <PlaceOrder></PlaceOrder>
           </RequireAuth>
         }></Route>
-        <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="login" element={<Login></Login>}></Route>
+        <Route path="register" element={<Register></Register>}></Route>
         <Route path="dashboard" element={
           <RequireAuth>
             <Dashboard></Dashboard>
@@ -36,6 +38,8 @@ function App() {
           <Route path='myOrders' element={<MyOrders></MyOrders>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
         </Route>
+        <Route path="portfolio" element={<MyPortfolio></MyPortfolio>}></Route>
+        <Route path="blogs" element={<Blogs></Blogs>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer theme="colored" />
