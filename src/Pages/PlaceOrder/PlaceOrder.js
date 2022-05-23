@@ -46,11 +46,14 @@ const PlaceOrder = () => {
         console.log(totalPrice, totalPriceInt)
 
         const order = {
-            name: user.displayName,
+            userName: user.displayName,
+            name: name,
             email: user.email,
             phone: phone,
             address: address,
-            price: totalPrice
+            image: image,
+            price: totalPrice,
+            amount: amount
         }
 
         await axios.post(`https://floating-stream-33356.herokuapp.com/orders`, order)
