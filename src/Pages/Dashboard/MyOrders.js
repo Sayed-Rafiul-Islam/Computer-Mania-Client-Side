@@ -2,11 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import MyOrder from './MyOrder';
-
 
 const MyOrders = () => {
-
     const [user] = useAuthState(auth);
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
@@ -31,7 +28,6 @@ const MyOrders = () => {
                 setMyOrders(newOrders);
             })
     }
-
 
     return (
         <div>
