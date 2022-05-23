@@ -48,12 +48,12 @@ const Login = () => {
     }
     return (
         <div>
-            <div class="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <h1 class="text-5xl font-bold">Login <span className='text-primary'>Now!</span></h1>
-                <form onSubmit={handleLogin} class="card-body">
-                    <input type="email" placeholder="Email" name='email' class="input input-bordered" />
-                    <input type="password" placeholder="Password" name='password' class="input input-bordered" />
-                    <input type="submit" placeholder="password" value='Login' class="btn btn-primary" />
+            <div className="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <h1 className="text-5xl font-bold">Login <span className='text-primary'>Now!</span></h1>
+                <form onSubmit={handleLogin} className="card-body">
+                    <input type="email" placeholder="Email" name='email' className="input input-bordered" />
+                    <input type="password" placeholder="Password" name='password' className="input input-bordered" />
+                    <input type="submit" placeholder="password" value='Login' className="btn btn-primary" />
                 </form>
                 {errorMessage}
             </div>

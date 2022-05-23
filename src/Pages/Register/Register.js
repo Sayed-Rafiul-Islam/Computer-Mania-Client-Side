@@ -40,13 +40,13 @@ const Register = () => {
     }
     return (
         <div>
-            <div class="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <h1 class="text-5xl font-bold">Please <span className='text-primary'>Register</span></h1>
-                <form onSubmit={handleRegister} class="card-body">
-                    <input type="text" placeholder="Name" name='name' class="input input-bordered" />
-                    <input type="email" placeholder="Email" name='email' class="input input-bordered" />
-                    <input type="password" placeholder="Password" name='password' class="input input-bordered" />
-                    <input type="submit" placeholder="password" value='Register' class="btn btn-primary" />
+            <div className="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <h1 className="text-5xl font-bold">Please <span className='text-primary'>Register</span></h1>
+                <form onSubmit={handleRegister} className="card-body">
+                    <input type="text" placeholder="Name" name='name' className="input input-bordered" />
+                    <input type="email" placeholder="Email" name='email' className="input input-bordered" />
+                    <input type="password" placeholder="Password" name='password' className="input input-bordered" />
+                    <input type="submit" placeholder="password" value='Register' className="btn btn-primary" />
                 </form>
                 {errorMessage}
             </div>
