@@ -1,17 +1,32 @@
-import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
+    const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
-        const getOrders = async () => {
+        const getOrders = () => {
             const email = user?.email;
             if (email) {
-                const { data } = await axios.get(`https://floating-stream-33356.herokuapp.com/myOrders?email=${email}`)
-                setMyOrders(data)
+                fetch(`https://floating-stream-33356.herokuapp.com/myOrders?email=${email}`, {
+                    method: "GET",
+                    headers: {
+                        "authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                    .then(res => {
+                        if (res.status == 401 || res.status === 403) {
+                            navigate('/home')
+                            signOut(auth);
+                            localStorage.removeItem('accessToken')
+                        }
+                        return res.json()
+                    })
+                    .then(data => setMyOrders(data))
             }
         }
         getOrders();
