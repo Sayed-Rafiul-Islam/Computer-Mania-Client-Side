@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 const useToken = user => {
     const [token, setToken] = useState('');
     useEffect(() => {
+        const displayName = user?.user?.displayName;
         const email = user?.user?.email;
-        const currentUser = { email: email };
-        if (email) {
+        const currentUser = {
+            email: email,
+            displayName: displayName
+        };
+        if (email && displayName) {
             fetch(`https://floating-stream-33356.herokuapp.com/profile?email=${email}`, {
                 method: 'PUT',
                 headers: {

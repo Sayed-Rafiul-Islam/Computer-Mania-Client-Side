@@ -15,11 +15,11 @@ const MyOrders = () => {
                 fetch(`https://floating-stream-33356.herokuapp.com/myOrders?email=${email}`, {
                     method: "GET",
                     headers: {
-                        "authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
                 })
                     .then(res => {
-                        if (res.status == 401 || res.status === 403) {
+                        if (res.status === 401 || res.status === 403) {
                             navigate('/home')
                             signOut(auth);
                             localStorage.removeItem('accessToken')
@@ -50,7 +50,7 @@ const MyOrders = () => {
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
-                        <tr>
+                        <tr className='text-center'>
                             <th>No</th>
                             <th>Name</th>
                             <th>Amount</th>
@@ -60,8 +60,8 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            myOrders.map(myOrder =>
-                                < tr >
+                            myOrders?.map(myOrder =>
+                                < tr className='text-center'>
                                     <th>{myOrder.index}</th>
                                     <td>{myOrder.name}</td>
                                     <td>{myOrder.amount}</td>
