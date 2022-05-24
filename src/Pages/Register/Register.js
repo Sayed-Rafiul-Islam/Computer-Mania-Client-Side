@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
 
@@ -15,6 +16,8 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [token] = useToken(user);
 
     const handleRegister = async e => {
         e.preventDefault();

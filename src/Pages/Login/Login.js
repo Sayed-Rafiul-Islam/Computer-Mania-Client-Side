@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     // navigation section
@@ -23,6 +24,8 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [token] = useToken(user);
 
     const handleLogin = async e => {
         e.preventDefault();

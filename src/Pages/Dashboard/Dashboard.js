@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import { Link } from 'react-router-dom';
+import CustomLink from '../CustomLink';
 
 const Dashboard = () => {
     return (
@@ -14,9 +14,9 @@ const Dashboard = () => {
                 <div className="drawer-side">
                     <label for="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-                        <li><Link to='/dashboard'>My Profile</Link></li>
-                        <li><Link to='/dashboard/myOrders'>My orders</Link></li>
-                        <li><Link to='/dashboard/addReview'>Add A Review</Link></li>
+                        <li><CustomLink to='/dashboard'>My Profile</CustomLink></li>
+                        <li><CustomLink to='/dashboard/myOrders'>My orders</CustomLink></li>
+                        <li><CustomLink to='/dashboard/addReview'>Add A Review</CustomLink></li>
                     </ul>
 
                 </div>

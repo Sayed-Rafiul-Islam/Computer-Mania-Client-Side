@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 
 const SocialLogin = () => {
 
     // handle google sign in 
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    console.log(user)
 
     // navigation section
     const navigate = useNavigate();
@@ -19,6 +18,8 @@ const SocialLogin = () => {
         navigate(from, { replace: true });
     }
 
+    const [token] = useToken(user);
+
     //  error message 
     let errorMessage;
     if (error) {
@@ -28,7 +29,7 @@ const SocialLogin = () => {
         <div>
             {
                 loading ?
-                    <p>loaging</p>
+                    <p>loading</p>
                     :
                     <button onClick={() => signInWithGoogle()} className='btn btn-outline-success w-100'>Google Login</button>
 
