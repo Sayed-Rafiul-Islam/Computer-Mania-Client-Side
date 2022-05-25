@@ -2,6 +2,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
@@ -15,7 +16,8 @@ const MyOrders = () => {
                 fetch(`https://floating-stream-33356.herokuapp.com/myOrders?email=${email}`, {
                     method: "GET",
                     headers: {
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        'content-type': 'application/json',
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     }
                 })
                     .then(res => {
@@ -56,17 +58,19 @@ const MyOrders = () => {
                             <th>Amount</th>
                             <th>Price</th>
                             <th>Payment Status</th>
+                            <th>Order Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            myOrders?.map(myOrder =>
-                                < tr className='text-center'>
-                                    <th>{myOrder.index}</th>
+                            myOrders?.map((myOrder, index) =>
+                                < tr key={myOrder._id} className='text-center'>
+                                    <th>{index + 1}</th>
                                     <td>{myOrder.name}</td>
                                     <td>{myOrder.amount}</td>
                                     <td>{myOrder.price}</td>
-                                    <td><button onClick={() => handleOrderCancel(myOrder._id)} className='btn btn-sm btn-outline btn-error'>Cancel Order</button></td>
+                                    <td><Link to={`/dashboard/payment/${myOrder._id}`} className='btn btn-xs btn-outline btn-primary'>Proceed to Payment</Link></td>
+                                    <td><button onClick={() => handleOrderCancel(myOrder._id)} className='btn btn-xs btn-outline btn-error'>Cancel Order</button></td>
                                 </tr>
                             )
                         }

@@ -39,9 +39,9 @@ const AllOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            allOrders?.map(order =>
+                            allOrders?.map((order, index) =>
                                 < tr className='text-center'>
-                                    <th>{order.index}</th>
+                                    <th>{index + 1}</th>
                                     <td>{order.name}</td>
                                     <td>{order.amount}</td>
                                     <td>{order.price}</td>
