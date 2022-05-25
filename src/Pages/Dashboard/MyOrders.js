@@ -32,7 +32,7 @@ const MyOrders = () => {
         getOrders();
     }, [user])
 
-    const handleOrderCancel = async _id => {
+    const handleOrderCancel = _id => {
         const url = `https://floating-stream-33356.herokuapp.com/orders/${_id}`;
         fetch(url, {
             method: 'DELETE'
