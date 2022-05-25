@@ -36,7 +36,7 @@ const Payment = () => {
                 <b>Shipping Address : <span className='text-primary'>{address}</span></b>
                 <div>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm />
+                        <CheckoutForm order={order} />
                     </Elements>
                 </div>
             </div>

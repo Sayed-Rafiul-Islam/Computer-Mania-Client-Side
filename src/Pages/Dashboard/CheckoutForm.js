@@ -1,15 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     CardElement,
     useStripe,
     useElements,
 } from '@stripe/react-stripe-js';
+import { useNavigate } from 'react-router';
+import { signOut } from 'firebase/auth';
+import auth from '../../firebase.init';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ order }) => {
+    const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
     const [errorMessege, setErrorMessege] = useState('')
     const [clientSecret, setClientSecret] = useState('')
+    const { price } = order;
+    console.log(JSON.stringify({ price }))
+
+    useEffect(() => {
+        const getOrders = () => {
+            if (price) {
+                fetch(`https://floating-stream-33356.herokuapp.com/create-payment-intent`, {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify({ price })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data?.clientSecret) {
+                            setClientSecret(data.clientSecret)
+                        }
+                    })
+            }
+        }
+        getOrders();
+    }, [price])
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -52,7 +80,7 @@ const CheckoutForm = () => {
                     },
                 }}
             />
-            <button className='btn btn-sm btn-outline btn-primary mt-5' type="submit" disabled={!stripe}>
+            <button className='btn btn-sm btn-outline btn-primary mt-5' type="submit" disabled={!stripe || !clientSecret}>
                 Pay
             </button>
             {errorMessege && <p className='text-error'>{errorMessege}</p>}
