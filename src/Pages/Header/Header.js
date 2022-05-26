@@ -25,7 +25,7 @@ const Header = () => {
                             <>
                                 <CustomLink className='text-lg' to='/dashboard'><span className='transition-colors hover:text-primary'>Dashboard</span></CustomLink>
                                 <CustomLink to='/'><button className='text-lg transition-colors hover:text-red-500' onClick={handleLogout}>Log Out</button>
-                                    <p className='text-lg ml-5 text-primary'>{user.displayName}</p></CustomLink>
+                                    <p className='text-lg ml-5 text-primary'>{user?.displayName}</p></CustomLink>
 
                             </>
                             :
@@ -34,7 +34,7 @@ const Header = () => {
                 </ul>
             </div>
 
-            <div className="hidden lg:flex">
+            <div className="hidden lg:flex absolute top-10 z-50">
                 <div className='flex mx-auto'>
                     <CustomLink className='text-lg px-3' to='/home'><span className='transition-colors hover:text-primary'>Home</span></CustomLink>
                     <CustomLink className='text-lg px-3' to='/portfolio'><span className='transition-colors hover:text-primary'>My Portfolio</span></CustomLink>
@@ -45,7 +45,7 @@ const Header = () => {
                                 <CustomLink className='text-lg px-3' to='/dashboard'><span className='transition-colors hover:text-primary'>Dashboard</span></CustomLink>
                                 <CustomLink className='text-lg' to='/'><button onClick={handleLogout} className='transition-colors hover:text-red-500'>Log Out</button>
                                 </CustomLink>
-                                <p className='text-lg ml-5 text-primary'>{user.displayName}</p>
+                                <p className='text-lg ml-5 text-primary'>{user?.displayName}</p>
                             </div>
                             :
                             <CustomLink className='text-lg px-3' to='/login'><span className='transition-colors hover:text-primary'>Login</span></CustomLink>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
@@ -7,6 +7,8 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import useToken from '../../hooks/useToken';
 
 const Register = () => {
+    const [user1, setUser1] = useState({});
+
 
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
     // handle registration
@@ -17,7 +19,7 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [token] = useToken(user);
+
 
     const handleRegister = async e => {
         e.preventDefault();
@@ -25,8 +27,17 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
+        const user = {
+            user: { email, displayName }
+        }
+        setUser1(user)
+
+
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName });
+
+
+
     }
 
     // error message 
@@ -38,9 +49,10 @@ const Register = () => {
     //  navigation section
     const navigate = useNavigate();
     if (user) {
-        // toast.info('Verification mail has been sent');
-        navigate('/home')
+        toast.info('Verification mail has been sent');
+        // navigate('/home')
     }
+    const [token] = useToken(user1);
     return (
         <div>
             <div className="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

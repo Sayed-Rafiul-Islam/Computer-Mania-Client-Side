@@ -15,8 +15,8 @@ const Review = () => {
 
     return (
         <div>
-            <h1 className='text-primary text-3xl'>Reviews</h1>
-            <div className='my-6'>
+            <h1 className='text-primary my-4 text-3xl'><b>Reviews</b></h1>
+            <div className='my-6 grid lg:grid-cols-4'>
                 {
                     reviews.map(userReview => <UserReview
                         key={userReview._id}
