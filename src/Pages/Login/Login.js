@@ -65,6 +65,9 @@ const Login = () => {
                 await sendPasswordResetEmail(email);
                 toast.info('Reset Password Link Sent via Email');
             }} className='btn btn-ghost px-2 pb-2 text-primary'>Reset Password</button></p>
+
+            <div className="divider mx-auto w-3/4">OR</div>
+
             <SocialLogin></SocialLogin>
         </div>
     );

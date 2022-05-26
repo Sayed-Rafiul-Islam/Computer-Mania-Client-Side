@@ -7,7 +7,7 @@ const Review = () => {
     console.log(reviews)
     useEffect(() => {
         const getparts = async () => {
-            const data = await axios.get(`http://localhost:5000/reviews`);
+            const data = await axios.get(`https://floating-stream-33356.herokuapp.com/reviews`);
             setReviews(data.data);
         }
         getparts();

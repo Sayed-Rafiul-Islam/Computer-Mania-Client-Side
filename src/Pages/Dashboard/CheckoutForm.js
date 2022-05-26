@@ -21,7 +21,7 @@ const CheckoutForm = ({ order }) => {
     useEffect(() => {
         const getOrders = () => {
             if (price) {
-                fetch(`http://localhost:5000/create-payment-intent`, {
+                fetch(`https://floating-stream-33356.herokuapp.com/create-payment-intent`, {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json',
@@ -84,7 +84,7 @@ const CheckoutForm = ({ order }) => {
             setErrorMessege('');
             setSuccess("Payment Completed");
 
-            fetch(`http://localhost:5000/payment/${_id}`, {
+            fetch(`https://floating-stream-33356.herokuapp.com/payment/${_id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',

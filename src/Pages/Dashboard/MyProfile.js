@@ -20,7 +20,7 @@ const MyProfile = () => {
             phone: phone
         }
         if (user?.email) {
-            await fetch(`http://localhost:5000/profile?email=${user.email}`, {
+            await fetch(`https://floating-stream-33356.herokuapp.com/profile?email=${user.email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

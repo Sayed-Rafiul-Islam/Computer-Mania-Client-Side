@@ -35,7 +35,7 @@ const AddPart = () => {
                             price: data.price
                         }
 
-                        axios.post(`http://localhost:5000/newPart`, newPart)
+                        axios.post(`https://floating-stream-33356.herokuapp.com/newPart`, newPart)
                             .then(response => {
                                 const { data } = response;
                                 if (data.insertedId) {

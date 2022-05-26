@@ -10,7 +10,7 @@ const useToken = user => {
             displayName: displayName
         };
         if (email && displayName) {
-            fetch(`http://localhost:5000/profile?email=${email}`, {
+            fetch(`https://floating-stream-33356.herokuapp.com/profile?email=${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

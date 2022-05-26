@@ -13,7 +13,7 @@ const MyOrders = () => {
         const getOrders = () => {
             const email = user?.email;
             if (email) {
-                fetch(`http://localhost:5000/myOrders?email=${email}`, {
+                fetch(`https://floating-stream-33356.herokuapp.com/myOrders?email=${email}`, {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json',
@@ -35,7 +35,7 @@ const MyOrders = () => {
     }, [user])
 
     const handleOrderCancel = _id => {
-        const url = `http://localhost:5000/orders/${_id}`;
+        const url = `https://floating-stream-33356.herokuapp.com/orders/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -65,7 +65,7 @@ const MyOrders = () => {
                         {
                             myOrders?.map((myOrder, index) =>
                                 < tr key={myOrder._id} className='text-center'>
-                                    <th>{index + 1}</th>
+                                    <td>{index + 1}</td>
                                     <td>{myOrder.name}</td>
                                     <td>{myOrder.amount}</td>
                                     <td>{myOrder.price}</td>

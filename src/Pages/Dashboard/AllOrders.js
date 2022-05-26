@@ -7,14 +7,14 @@ const AllOrders = () => {
 
     useEffect(() => {
         const getParts = async () => {
-            const data = await axios.get(`http://localhost:5000/allOrders`);
+            const data = await axios.get(`https://floating-stream-33356.herokuapp.com/allOrders`);
             setAllOrders(data.data);
         }
         getParts();
     }, [reload])
 
     const removeOrder = _id => {
-        const url = `http://localhost:5000/orders/${_id}`;
+        const url = `https://floating-stream-33356.herokuapp.com/orders/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -26,7 +26,7 @@ const AllOrders = () => {
     }
 
     const shipOrder = async _id => {
-        await fetch(`http://localhost:5000/allOrders/${_id}`, {
+        await fetch(`https://floating-stream-33356.herokuapp.com/allOrders/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
