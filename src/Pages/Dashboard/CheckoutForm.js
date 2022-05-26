@@ -5,6 +5,7 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 
 const CheckoutForm = ({ order }) => {
@@ -92,7 +93,11 @@ const CheckoutForm = ({ order }) => {
                 },
                 body: JSON.stringify({ orderId: _id, transactionId: paymentIntent.id })
             }).then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    toast.success('Payment Successful')
+                    navigate('/dashboard/myOrders')
+                })
+
 
         }
         setLoading(false)

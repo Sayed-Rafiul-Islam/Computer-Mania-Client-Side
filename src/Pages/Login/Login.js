@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import auth from '../../firebase.init';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useToken from '../../hooks/useToken';
@@ -34,10 +33,6 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         await signInWithEmailAndPassword(email, password);
-
-        // email sent to database and access token stored in local storage
-        // const { data } = await axios.post('/login', { email })
-        // localStorage.setItem('accessToken', data.accessToken);
     }
 
     // error message and toast if user logs in
@@ -46,11 +41,11 @@ const Login = () => {
         errorMessage = <p className='text-red-500 text-center'>{error?.message}</p>;
     }
     if (user) {
-        // toast.success('Successfully Logged In');
+        toast.success('Successfully Logged In');
         navigate(from, { replace: true });
     }
     return (
-        <div>
+        <div className='lg:mt-28'>
             <div className="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <h1 className="text-5xl font-bold">Login <span className='text-primary'>Now!</span></h1>
                 <form onSubmit={handleLogin} className="card-body">

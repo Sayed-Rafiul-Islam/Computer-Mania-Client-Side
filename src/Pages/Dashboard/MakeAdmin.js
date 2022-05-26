@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const MakeAdmin = () => {
@@ -48,6 +49,7 @@ const MakeAdmin = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     setReload(reload + 1)
+                    toast.success(`Admin access granted to ${email}`)
                 }
 
             })

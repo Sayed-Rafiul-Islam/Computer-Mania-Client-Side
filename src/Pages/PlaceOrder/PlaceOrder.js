@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const PlaceOrder = () => {
@@ -83,13 +84,13 @@ const PlaceOrder = () => {
                     setReload(reload + 1);
                 }
             })
-
+        toast.success('Order has been placed')
         e.target.reset()
         setAmount(0);
     }
 
     return (
-        <div>
+        <div className='lg:mt-36 mt-12'>
             <p>User Name : <span className='text-secondary'>{user.displayName}</span> <br /> Email : <span className='text-secondary'>{user.email}</span></p>
             <div className="mx-auto hero-content flex-col lg:flex-row">
                 <img className='w-1/2 mr-2 rounded-l-full' src={image} alt='' />
@@ -102,7 +103,7 @@ const PlaceOrder = () => {
 
                     <div className='w-1/2 mt-9'>
                         <form onSubmit={handlePlaceOrder}>
-                            <input onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount" name='amount' className="input my-2 input-bordered input-secondary w-1/2 max-w-xs" />
+                            <input onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Enter Amount" name='amount' className="input my-2 input-bordered input-secondary w-full max-w-xs" />
                             <input required type="number" placeholder="Phone Number" name='phone' className="input my-2 input-bordered input-secondary w-full max-w-xs" />
                             <input required type="text" placeholder="Shipping Address" name='address' className="input my-2 input-bordered input-secondary w-full max-w-xs" />
                             {

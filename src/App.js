@@ -24,7 +24,7 @@ import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
-    <div className="App ml-6 lg:mx-6">
+    <div className="App lg:mx-6">
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const AllOrders = () => {
     const [allOrders, setAllOrders] = useState([]);
@@ -22,6 +23,7 @@ const AllOrders = () => {
             .then(data => {
                 const newOrders = allOrders.filter(order => order?._id !== _id);
                 setAllOrders(newOrders);
+                toast.error('Order Removed')
             })
     }
 
@@ -35,6 +37,7 @@ const AllOrders = () => {
         })
             .then(res => res.json())
             .then(data => {
+                toast.success('Produced Shipper')
                 setReload(reload + 1);
             })
     }

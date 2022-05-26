@@ -3,12 +3,14 @@ import React from 'react';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import CustomLink from '../CustomLink';
+import { toast } from 'react-toastify';
 
 const Header = () => {
     const [user] = useAuthState(auth);
 
     const handleLogout = () => {
         signOut(auth);
+        toast.error('Logged Out')
     }
     return (
         <div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { useQuery } from 'react-query'
 import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
@@ -21,10 +20,6 @@ const Payment = () => {
         }
         getParts();
     }, [_id])
-
-
-    console.log(order)
-
 
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl w-3/4 lg:ml-48 mx-auto mt-12">

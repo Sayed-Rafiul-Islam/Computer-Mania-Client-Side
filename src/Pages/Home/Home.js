@@ -9,7 +9,7 @@ import Summery from '../Summery/Summery';
 
 const Home = () => {
     return (
-        <div>
+        <div className='mt-12'>
             <Banner></Banner>
             <Parts></Parts>
             <ContactUs></ContactUs>

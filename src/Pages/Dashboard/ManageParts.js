@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const ManageParts = () => {
 
@@ -23,6 +24,7 @@ const ManageParts = () => {
             .then(data => {
                 const newParts = parts.filter(part => part?._id !== _id);
                 setParts(newParts);
+                toast.error('Product Removed')
             })
     }
     return (

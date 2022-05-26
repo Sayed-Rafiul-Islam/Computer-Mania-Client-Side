@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
@@ -43,12 +44,12 @@ const MyOrders = () => {
             .then(data => {
                 const newOrders = myOrders.filter(myOrder => myOrder?._id !== _id);
                 setMyOrders(newOrders);
+                toast.error('order canceled')
             })
     }
 
     return (
-        <div>
-            <h1>my orders</h1>
+        <div className='lg:mt-6'>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

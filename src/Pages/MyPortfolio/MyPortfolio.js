@@ -2,7 +2,7 @@ import React from 'react';
 
 const MyPortfolio = () => {
     return (
-        <div className="card lg:card-side bg-base-100 shadow-xl w-3/4 lg:ml-80 mx-auto mt-12">
+        <div className="card lg:card-side bg-base-100 shadow-xl w-3/4 lg:ml-80 mx-auto lg:mt-36 mt-12">
             <figure><img className="w-96 rounded-xl" src="https://i.ibb.co/9vm0rcW/IMG-1697-min.jpg" alt='' /></figure>
             <div className="card-body text-left">
                 <h2 className="card-title text-primary">Sayed Rafiul Islam</h2>

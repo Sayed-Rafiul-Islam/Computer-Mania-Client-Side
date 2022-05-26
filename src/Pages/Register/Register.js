@@ -50,7 +50,7 @@ const Register = () => {
     const navigate = useNavigate();
     if (user) {
         toast.info('Verification mail has been sent');
-        // navigate('/home')
+        navigate('/home')
     }
     const [token] = useToken(user1);
     return (
