@@ -41,8 +41,7 @@ const AllOrders = () => {
 
 
     return (
-        <div>
-            <h1 className='text-3xl mr-48 my-7'>All <span className='text-primary'>Order</span></h1>
+        <div className='mt-6'>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

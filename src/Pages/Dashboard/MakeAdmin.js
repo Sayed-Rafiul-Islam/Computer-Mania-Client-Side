@@ -55,7 +55,7 @@ const MakeAdmin = () => {
     }
     return (
         <div className='ml-6 lg:ml-28'>
-            <div className="overflow-x-auto mt-12 w-full">
+            <div className="overflow-x-auto mt-6 w-full">
                 <table className="table">
                     <thead>
                         <tr className='text-center'>

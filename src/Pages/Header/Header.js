@@ -12,7 +12,7 @@ const Header = () => {
     }
     return (
         <div>
-            <div className="dropdown mr-96">
+            <div className="dropdown right-80 left-0 fixed z-50" >
                 <label tabIndex="0" className="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
@@ -34,7 +34,7 @@ const Header = () => {
                 </ul>
             </div>
 
-            <div className="hidden lg:flex absolute top-10 z-50">
+            <div className="hidden lg:flex fixed w-full bg-stone-900 py-3 top-10 z-50">
                 <div className='flex mx-auto'>
                     <CustomLink className='text-lg px-3' to='/home'><span className='transition-colors hover:text-primary'>Home</span></CustomLink>
                     <CustomLink className='text-lg px-3' to='/portfolio'><span className='transition-colors hover:text-primary'>My Portfolio</span></CustomLink>

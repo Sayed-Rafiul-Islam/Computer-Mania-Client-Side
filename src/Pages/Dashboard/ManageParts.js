@@ -26,10 +26,9 @@ const ManageParts = () => {
             })
     }
     return (
-        <div>
-            <h1>Manage Parts {parts.length}</h1>
+        <div className='w-full mt-5'>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table">
                     <thead>
                         <tr className='text-center'>
                             <th>No</th>
