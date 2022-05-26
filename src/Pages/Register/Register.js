@@ -54,7 +54,7 @@ const Register = () => {
     }
     const [token] = useToken(user1);
     return (
-        <div>
+        <div className='lg:mt-36'>
             <div className="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <h1 className="text-5xl font-bold">Please <span className='text-primary'>Register</span></h1>
                 <form onSubmit={handleRegister} className="card-body">

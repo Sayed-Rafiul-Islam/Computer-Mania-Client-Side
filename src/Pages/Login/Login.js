@@ -45,7 +45,7 @@ const Login = () => {
         navigate(from, { replace: true });
     }
     return (
-        <div className='lg:mt-28'>
+        <div className='lg:mt-36'>
             <div className="card mx-auto mt-12 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <h1 className="text-5xl font-bold">Login <span className='text-primary'>Now!</span></h1>
                 <form onSubmit={handleLogin} className="card-body">
