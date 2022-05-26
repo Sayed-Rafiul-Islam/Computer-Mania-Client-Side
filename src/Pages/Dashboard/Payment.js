@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L3JjiH7yGWsDGHml4W4G7p82P0PBWqkzlXFm
 
 const Payment = () => {
     const { _id } = useParams();
-    const url = `https://floating-stream-33356.herokuapp.com/payment/${_id}`
+    const url = `http://localhost:5000/payment/${_id}`
     const [order, setOrder] = useState({})
     const { name, image, address, amount, price } = order;
 

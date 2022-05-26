@@ -13,7 +13,7 @@ const MyOrders = () => {
         const getOrders = () => {
             const email = user?.email;
             if (email) {
-                fetch(`https://floating-stream-33356.herokuapp.com/myOrders?email=${email}`, {
+                fetch(`http://localhost:5000/myOrders?email=${email}`, {
                     method: "GET",
                     headers: {
                         'content-type': 'application/json',
@@ -35,7 +35,7 @@ const MyOrders = () => {
     }, [user])
 
     const handleOrderCancel = _id => {
-        const url = `https://floating-stream-33356.herokuapp.com/orders/${_id}`;
+        const url = `http://localhost:5000/orders/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -69,8 +69,23 @@ const MyOrders = () => {
                                     <td>{myOrder.name}</td>
                                     <td>{myOrder.amount}</td>
                                     <td>{myOrder.price}</td>
-                                    <td><Link to={`/dashboard/payment/${myOrder._id}`} className='btn btn-xs btn-outline btn-primary'>Proceed to Payment</Link></td>
-                                    <td><button onClick={() => handleOrderCancel(myOrder._id)} className='btn btn-xs btn-outline btn-error'>Cancel Order</button></td>
+                                    <td>{
+                                        myOrder.paid ? <b className='text-primary'>PAID</b> : <Link to={`/dashboard/payment/${myOrder._id}`} className='btn btn-xs btn-outline btn-primary'>Proceed to Payment</Link>
+                                    }
+                                    </td>
+                                    <td>{
+                                        myOrder.paid ?
+                                            <>
+                                                {
+                                                    myOrder.shipStatus ? <i className='text-primary'>Shipped</i>
+                                                        :
+                                                        <i className='text-primary'>Pending</i>
+                                                }
+                                            </>
+                                            :
+                                            <button onClick={() => handleOrderCancel(myOrder._id)} className='btn btn-xs btn-outline btn-error'>Cancel Order</button>
+                                    }
+                                    </td>
                                 </tr>
                             )
                         }

@@ -7,7 +7,7 @@ const Parts = () => {
     const homeParts = parts.slice(0, 6);
     useEffect(() => {
         const getParts = async () => {
-            const data = await axios.get(`https://floating-stream-33356.herokuapp.com/parts`);
+            const data = await axios.get(`http://localhost:5000/parts`);
             setParts(data.data);
         }
         getParts();

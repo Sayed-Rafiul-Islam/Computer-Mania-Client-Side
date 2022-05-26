@@ -28,7 +28,7 @@ const PlaceOrder = () => {
     const { _id } = useParams();
     useEffect(() => {
         const getItem = async () => {
-            const data = await axios.get(`https://floating-stream-33356.herokuapp.com/placeOrder/${_id}`);
+            const data = await axios.get(`http://localhost:5000/placeOrder/${_id}`);
             setPart(data.data);
         }
         getItem();
@@ -56,7 +56,7 @@ const PlaceOrder = () => {
             amount: amount
         }
 
-        await axios.post(`https://floating-stream-33356.herokuapp.com/orders`, order)
+        await axios.post(`http://localhost:5000/orders`, order)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {
@@ -70,7 +70,7 @@ const PlaceOrder = () => {
         const newQuantity = parseInt(quantity) - parseInt(amount);
         const updatedQuantity = `${newQuantity}`;
 
-        await fetch(`https://floating-stream-33356.herokuapp.com/placeOrder/${_id}`, {
+        await fetch(`http://localhost:5000/placeOrder/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -5,8 +5,7 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router';
-import { signOut } from 'firebase/auth';
-import auth from '../../firebase.init';
+
 
 const CheckoutForm = ({ order }) => {
     const navigate = useNavigate();
@@ -14,13 +13,15 @@ const CheckoutForm = ({ order }) => {
     const elements = useElements();
     const [errorMessege, setErrorMessege] = useState('')
     const [clientSecret, setClientSecret] = useState('')
-    const { price } = order;
-    console.log(JSON.stringify({ price }))
+    const [success, setSuccess] = useState('')
+    const [transactionId, setTransactionId] = useState('')
+    const [loading, setLoading] = useState(false)
+    const { price, email, _id } = order;
 
     useEffect(() => {
         const getOrders = () => {
             if (price) {
-                fetch(`https://floating-stream-33356.herokuapp.com/create-payment-intent`, {
+                fetch(`http://localhost:5000/create-payment-intent`, {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json',
@@ -41,6 +42,7 @@ const CheckoutForm = ({ order }) => {
 
     const handleSubmit = async e => {
         e.preventDefault()
+        setLoading(true);
         if (!stripe || !elements) {
             return;
         }
@@ -60,6 +62,40 @@ const CheckoutForm = ({ order }) => {
         } else {
             setErrorMessege('');
         }
+        setSuccess('')
+
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        email: email,
+                    },
+                },
+            },
+        );
+        if (intentError) {
+            setErrorMessege(intentError?.message)
+
+        }
+        else {
+            setTransactionId(paymentIntent.id);
+            setErrorMessege('');
+            setSuccess("Payment Completed");
+
+            fetch(`http://localhost:5000/payment/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify({ orderId: _id, transactionId: paymentIntent.id })
+            }).then(res => res.json())
+                .then(data => console.log(data))
+
+        }
+        setLoading(false)
     }
     return (
 
@@ -80,10 +116,16 @@ const CheckoutForm = ({ order }) => {
                     },
                 }}
             />
-            <button className='btn btn-sm btn-outline btn-primary mt-5' type="submit" disabled={!stripe || !clientSecret}>
-                Pay
-            </button>
+            {
+                loading ? <p>loading</p> : <button className='btn btn-sm btn-outline btn-primary mt-5' type="submit" disabled={!stripe || !clientSecret}>
+                    Pay
+                </button>
+            }
             {errorMessege && <p className='text-error'>{errorMessege}</p>}
+            {success && <div>
+                <p className='text-primary'>{success}</p>
+                <p>Your Transaction ID is : <b className='text-primary'>{transactionId}</b></p>
+            </div>}
         </form>
 
     );

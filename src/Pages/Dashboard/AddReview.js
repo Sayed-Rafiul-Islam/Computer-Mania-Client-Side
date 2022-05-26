@@ -15,7 +15,7 @@ const AddReview = () => {
             experience: experience
         }
         if (user?.email) {
-            await fetch(`https://floating-stream-33356.herokuapp.com/review?email=${user.email}`, {
+            await fetch(`http://localhost:5000/review?email=${user.email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

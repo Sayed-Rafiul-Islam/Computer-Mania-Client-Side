@@ -10,7 +10,7 @@ const MakeAdmin = () => {
 
     useEffect(() => {
         const getParts = () => {
-            fetch(`https://floating-stream-33356.herokuapp.com/users`, {
+            fetch(`http://localhost:5000/users`, {
                 method: "GET",
                 headers: {
                     "authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const MakeAdmin = () => {
 
     const handleMakeAmin = email => {
         const role = 'admin';
-        fetch(`https://floating-stream-33356.herokuapp.com/makeAdmin?email=${email}`, {
+        fetch(`http://localhost:5000/makeAdmin?email=${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
