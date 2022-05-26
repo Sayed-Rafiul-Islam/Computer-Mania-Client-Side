@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const AddPart = () => {
     const [show, setShow] = useState(false);
@@ -42,22 +43,23 @@ const AddPart = () => {
                                 }
                             })
                         reset()
+                        toast.success("Product Added Successfully")
                     }
                 })
         }
         else {
             setShow(true);
-            alert('Amount must be Greater than Minimum Order Amount');
+            toast.error('Amount must be Greater than Minimum Order Amount');
         }
 
 
     }
     return (
-        <div className='mt-8 ml-8'>
-            <h1 className='text-3xl lg:mr-96 mb-3'>Add A <span className='text-primary'>Product</span></h1>
+        <div className='mt-12 lg:ml-48 w-1/2 mx-auto'>
+            <h1 className='text-3xl mb-3'>Add A <span className='text-primary'>Product</span></h1>
             <form onSubmit={handleSubmit(addPart)}>
                 <div className='form-control w-full mx-w-xs'>
-                    <label className='label'>
+                    <label className='text-left ml-4 mt-2'>
                         <span className='label-text'>Product Name</span>
                     </label>
                     <input
@@ -76,7 +78,7 @@ const AddPart = () => {
                 </div>
 
                 <div className='form-control w-full mx-w-xs'>
-                    <label className='label'>
+                    <label className='text-left ml-4 mt-2'>
                         <span className='label-text'>Picture</span>
                     </label>
                     <input
@@ -95,7 +97,7 @@ const AddPart = () => {
 
 
                 <div className='form-control w-full mx-w-xs'>
-                    <label className='label'>
+                    <label className='text-left ml-4 mt-2'>
                         <span className='label-text'>Description</span>
                     </label>
                     <input
@@ -114,7 +116,7 @@ const AddPart = () => {
                 </div>
 
                 <div className='form-control w-full mx-w-xs'>
-                    <label className='label'>
+                    <label className='text-left ml-4 mt-2'>
                         <span className='label-text'>Amount</span>
                     </label>
                     <input
@@ -133,7 +135,7 @@ const AddPart = () => {
                 </div>
 
                 <div className='form-control w-full mx-w-xs'>
-                    <label className='label'>
+                    <label className='text-left ml-4 mt-2'>
                         <span className='label-text'>Minimum Order Amount</span>
                     </label>
                     <input
@@ -152,7 +154,7 @@ const AddPart = () => {
                 </div>
 
                 <div className='form-control w-full mx-w-xs'>
-                    <label className='label'>
+                    <label className='text-left ml-4 mt-2'>
                         <span className='label-text'>Price</span>
                     </label>
                     <input
@@ -169,7 +171,7 @@ const AddPart = () => {
                         {errors.price?.type === 'required' && <span className='label-text-alt text-red-500'>{errors.price.message}</span>}
                     </label>
                 </div>
-                <input className='btn btn-primary w-full mx-w-xs' type="submit" value='Add Product' />
+                <input className='btn btn-primary lg:rounded-3xl rounded-xl w-1/2 mt-9 lg:mt-5' type="submit" value='Add Product' />
             </form>
 
         </div >

@@ -47,8 +47,8 @@ const ManageParts = () => {
                                 <tr className='text-center' key={part._id}>
                                     <td>{index + 1}</td>
                                     <td>{part.name}</td>
-                                    <td><div class="avatar">
-                                        <div class="w-24 mask mask-hexagon">
+                                    <td><div className="avatar">
+                                        <div className="w-24 mask mask-hexagon">
                                             <img src={part.image} alt="" />
                                         </div>
                                     </div></td>

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Home from './Pages/Home/Home';
 import './App.css';
@@ -53,7 +54,7 @@ function App() {
         <Route path="blogs" element={<Blogs></Blogs>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
-      <ToastContainer theme="colored" />
+      <ToastContainer theme="dark" />
 
     </div>
   );
