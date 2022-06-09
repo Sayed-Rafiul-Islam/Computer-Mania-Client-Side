@@ -5,7 +5,7 @@
 Click [Computer Menia](https://computer-menia.web.app/) to view it in your browser
 
 ## Description
-Computer Menia is a website that sells computer parts, provide repair services and also buys second hand computer parts from their customer. It has different access levels and nested navigation system,
+Computer Menia is a website that sells computer parts, provides repair services and also buys secondhand computer parts from their customer. It has different access levels and nested navigation system.
 
 ## Features
 * An user can register
